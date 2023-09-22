@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+{% block content %}
+<!--<h4>Update Student {{id}}</h4>-->
+<div class="row">
+    <div class="col-sm-8 offset 2">
+        <h4 class="text-center alert alert-info">Update Student Info.</h4>
+        <form action="" method="POST">
+             {%  csrf_token %}
+             {{form.as_p}}
+             <input type="submit" class="btn btn-success" value="Update">
+             <a href="{% url 'view_data' %}" class="btn btn-info">Student Database</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database CRUD</title>
+    <style>
+        .custom-button {
+            background-color: transparent; /* Transparent background */
+            border: 2px solid #000; /* 2px bold border with a black color */
+            color:#fff; /* Text color (black in this example) */
+            font-weight: bold; /* Bold text */
+            padding: 10px 20px; /* Padding for the button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Show a hand cursor on hover */
+            float: right; /* Float the button to the right */
+        }
+    
+        /* Hover effect for the button */
+        .custom-button:hover {
+            background-color: #000; /* Background color on hover (can be adjusted) */
+            color: #fff; /* Text color on hover (white in this example) */
+        }
+        .custom-font {
+                font-family: "TimesRoman", sans-serif;
+            }
+        /* Add your custom CSS styles here */
+        body {
+            font-family:monospace;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to {Student} Database</h1>
+        <p>Manage and Interact with Student Records with ease.</p>
+        <a href="http://127.0.0.1:8000/try/" class="cta-button">Add New Student</a>
+        <!--<span class="badge badge-dark">Admin Login</span>-->
+        <!--<span class="text-right badge badge-secondary"><a href="http://127.0.0.1:8000/admin/">Admin Login</a></span>-->
+        <button type="button" class="custom-button"><a href="http://127.0.0.1:8000/admin/">Admin Login</a></</button>
+
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>About Us</h2>
+            <p class='custom-font'>This is a Fake API Webpage where Student Data is stored and User can perform all CRUD Functions here.</p>
+        </section>
+
+        <section class="section">
+            <h2>Our Services</h2>
+            <ul>
+                <li><a href="http://127.0.0.1:8000/try/">Student Registration</a></li>
+                <li><a href="http://127.0.0.1:8000/db/">Student Database Management</a></li>
+                <li>Updating Student Data</li>
+                <li>Deleting Student Data</li>                
+            </ul>
+        </section>
+        <section class="section">
+            <h2>Type Of Coloumns/Data Stored </h2>
+            <ul>
+                <li>Student ID   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     (INT)</li>
+                <li>Student Name     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   (STRING)</li>
+                <li>Student Email ID   &nbsp;&nbsp;&nbsp; (STRING)</li>
+                <li>Student Password   &nbsp;&nbsp;&nbsp; (STRING)</li>                
+            </ul>
+        </section>
+
+    </div>
+<br>
+<br>
+<br>
+<br>
+
+<!--div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 5"></button>
+    </div>
+<!--div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static "images/img1.png" %}" class="d-block w-100" alt="Image 1">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Django CRUD RESTful API</h5>
+            <p></p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static "images/img2.png" %}" class="d-block w-100" alt="Image 2">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>What is CRUD? </h5>
+            <p></p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static "images/img3.png" %}" class="d-block w-100" alt="Image 3">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Student Database Preview</h5>
+            <p></p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static "images/img4.png" %}" class="d-block w-100" alt="Image 2">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Student Registration Page Preview</h5>
+            <p></p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static "images/img5.png" %}" class="d-block w-100" alt="Image 2">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Student Data Update Page Preview</h5>
+            <p></p>
+        </div>
+    </div>
+</div-->
+    <!-- Include Bootstrap JavaScript (Make sure it's included after the carousel HTML) -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+
+
+
+
+
+</body>
+</html>
+

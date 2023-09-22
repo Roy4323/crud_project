@@ -1,0 +1,62 @@
+{% extends "base.html" %} 
+{%block content %}
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center alert alert-info">Add New Student</h4>
+        <form action="" method="POST">
+             {%  csrf_token %}
+             {{form.as_p}}
+             <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+    <div class="col-sm-7 offset-1">
+        <h4 class="text-center alert alert-info">Student Database</h4>
+        {% if stu %}
+          <!--<h4>Table Data</h4>-->
+          <!--h4 class="text-center alert alert-success" role="alert">Table Data</h4-->
+          <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Action</th> <!-- for adding EDIT and DEL Button-->
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for st in stu %}
+
+                <tr>
+                  <th scope="row">{{st.id}}</th>
+                  <td>{{st.name}}</td>
+                  <td>{{st.email}}</td>
+                  <td>{{st.password}}</td>
+                  <td>
+                    <a href="{% url 'update_data' st.id %}" class="btn btn-warning btn sm">Edit</a>
+                    <!--<a href="#" class="btn btn-danger btn sm">Delete</a>-->
+                    <form action="{% url 'del_data' st.id %}" method="POST" 
+                    class="d-inline">{%  csrf_token %}
+                        <input type="submit" class="btn btn-danger btn sm" value="Delete">
+                    </form>    
+
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <h4 class="text-center alert alert-warning">No Record</h4>  
+        {% endif %}
+
+
+    </div>
+
+
+
+</div>
+{% endblock content %}
+
+<!--after making table structure(col sm-8) go to Bootstrap
+     site and get table code-->

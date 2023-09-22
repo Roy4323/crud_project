@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+  {% if action == 'mark_as_deleted' %}
+    <p class="success">Users have been marked as deleted. Now you can use the "Delete selected users" action to remove them permanently.</p>
+  {% endif %}
+  
+  <!-- Rest of the content -->
+  {{ block.super }}
+{% endblock %}
